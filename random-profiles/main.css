@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    padding-bottom: 2rem;
+    font-family: Roboto;
+    text-align: center;
+    background-color:  #f5f6f7;
+}
+
+.filter-container {
+    padding: 0 1.5rem 1rem;
+    margin: 2rem 0;
+    display: inline-block;
+    border-radius: 0.3rem;
+    background: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.filter-container h1 {
+    margin-bottom: .5rem;
+}
+
+input {
+    width: 15rem;
+    margin-top: .7rem;
+    border-radius: .25rem;
+    border: 1px solid #ced4da;
+}
+
+input, button {
+    padding: .3rem;
+}
+
+.cards-container {
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+}
+
+.card {
+    width: 20rem;
+    padding: 1rem .3rem .3rem;
+    margin: .5rem;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    background-color: white;
+    border-radius: .5rem;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.card:hover {
+    background-color: #ccf2ff;
+}
+
+.card h3 {
+    margin: .4rem 0 0;
+    font-weight: normal;
+    color: #6c757d;
+}
+
+.firstname,
+.lastname,
+.email,
+.location {
+    font-weight: bolder;
+}
+
+.card .map {
+    width: 100%;
+    height: 17.5rem;
+    margin-top: .4rem;
+    border: none;
+    border-radius: .3rem;
+}
+
+.card .map-container {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.card .map-container.loading::before {
+    position: absolute;
+    content: "loading...";
+    color: #3498db;
+}
+
+.card .photo {
+    padding: 2px;
+    margin-bottom: .2rem;
+    border-radius: 50%;
+    border: 4px solid #add8e6;
+    transform: scale(0.8);
+    transition: all .2s ease;
+}
+
+.card .photo.loading {
+    border: none;
+}
+
+.card:hover .photo {
+    transform: scale(1);
+}
+
+
+#preloader {
+    width: 80px;
+    height: 80px;
+    margin: 7% auto 0;
+    border: 10px solid #d6f4ff;
+    border-top: 10px solid #3498db;
+    border-radius: 50%;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 767px) {
+    .card {
+        width: 100%;
+        margin: .5rem 0;
+    }
+
+    .card .map {
+        height: 20rem;
+    }
+}
+
+@media (max-width: 575px) {
+    .card .map {
+        height: 15rem;
+    }
+}
