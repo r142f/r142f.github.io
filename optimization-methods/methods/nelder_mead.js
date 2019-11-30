@@ -1,4 +1,4 @@
-function nelder_nead({ f }, [V1, V2, V3], Ɛ) {
+function nelder_nead({ f, name }, [V1, V2, V3], Ɛ) {
   const α = 1,
     β = 0.5,
     γ = 2;
