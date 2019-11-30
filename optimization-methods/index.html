@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Document</title>
+  </head>
+
+  <style>
+    *:focus {
+      box-shadow: none !important;
+      outline: none !important;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="row method1 mt-2 mb-5">
+        <div class="input-group col-12">
+          <button type="button" class="btn btn-dark col-12">
+            Метод деформирующего многогранника
+          </button>
+          <div class="input-group-prepend">
+            <div class="input-group-text">X<sub>1</sub></div>
+          </div>
+          <input
+            type="text"
+            value="-1,-1"
+            class="form-control method1__coordinate"
+            placeholder="Начальная точка"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">X<sub>2</sub></div>
+          </div>
+          <input
+            type="text"
+            value="1,0"
+            class="form-control method1__coordinate"
+            placeholder="Начальная точка"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">X<sub>3</sub></div>
+          </div>
+          <input
+            type="text"
+            value="0,1"
+            class="form-control method1__coordinate"
+            placeholder="Начальная точка"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">Ɛ</div>
+          </div>
+          <input
+            type="number"
+            value="1e-5"
+            class="form-control"
+            id="method1__tolerance"
+          />
+        </div>
+        <div class="input-group col-12">
+          <select class="custom-select method1__function">
+            <option value="f1" selected>f₁ = 100(y - x²)² + 5(1 - x)²</option>
+            <option value="f2">f₂ = (x² + y - 11)² + (x + y² - 7)²</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+          <label class="m-0 mt-1 pl-2 ml-1" for="method1__logs">Вычисления</label>
+          <textarea
+            class="form-control method1__logs"
+            id="method1__logs"
+            rows="8"="6"
+            readonly
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="row method2 mt-2 mb-5">
+        <div class="input-group col-12">
+          <button type="button" class="btn btn-dark col-12">
+            Градиентный метод c постоянным шагом
+          </button>
+          <div class="input-group-prepend">
+            <div class="input-group-text">X<sub>1</sub></div>
+          </div>
+          <input
+            type="text"
+            value="1,2"
+            class="form-control method2__coordinate"
+            placeholder="Начальная точка"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">Ɛ</div>
+          </div>
+          <input
+            type="number"
+            value="1e-5"
+            class="form-control"
+            id="method2__tolerance"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">α</div>
+          </div>
+          <input
+            type="number"
+            value="1e-3"
+            class="form-control method2__step"
+            id="method2__tolerance"
+          />
+        </div>
+        <div class="input-group col-12">
+          <select class="custom-select method2__function">
+            <option value="f1" selected>f₁ = 100(y - x²)² + 5(1 - x)²</option>
+            <option value="f2">f₂ = (x² + y - 11)² + (x + y² - 7)²</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+            <label class="m-0 mt-1 pl-2 ml-1" for="method2__logs">Вычисления</label>
+            <textarea
+              class="form-control method2__logs"
+              id="method2__logs"
+              rows="8"="6"
+              readonly
+            ></textarea>
+          </div>
+      </div>
+
+      <div class="row method3 mt-2 mb-5">
+        <div class="input-group col-12">
+          <button type="button" class="btn btn-dark col-12">
+            Метод сопряженных градиентов
+          </button>
+          <div class="input-group-prepend">
+            <div class="input-group-text">X<sub>1</sub></div>
+          </div>
+          <input
+            type="text"
+            value="-1,-1"
+            class="form-control method3__coordinate"
+            placeholder="Начальная точка"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">Ɛ</div>
+          </div>
+          <input
+            type="number"
+            value="1e-3"
+            class="form-control"
+            id="method3__tolerance"
+          />
+        </div>
+        <div class="input-group col-12">
+          <select class="custom-select method3__function">
+            <option value="f1" selected>f₁ = 100(y - x²)² + 5(1 - x)²</option>
+            <option value="f2">f₂ = (x² + y - 11)² + (x + y² - 7)²</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+            <label class="m-0 mt-1 pl-2 ml-1" for="method3__logs">Вычисления</label>
+            <textarea
+              class="form-control method3__logs"
+              id="method3__logs"
+              rows="8"="6"
+              readonly
+            ></textarea>
+          </div>
+      </div>
+
+      <div class="row method4 mt-2 mb-5">
+        <div class="input-group col-12">
+          <button type="button" class="btn btn-dark col-12">
+            Ньютоновский метод
+          </button>
+          <div class="input-group-prepend">
+            <div class="input-group-text">X<sub>1</sub></div>
+          </div>
+          <input
+            type="text"
+            value="-1,-1"
+            class="form-control method4__coordinate"
+            placeholder="Начальная точка"
+          />
+          <div class="input-group-prepend">
+            <div class="input-group-text">Ɛ</div>
+          </div>
+          <input
+            type="number"
+            value="1e-3"
+            class="form-control"
+            id="method4__tolerance"
+          />
+        </div>
+        <div class="input-group col-12">
+          <select class="custom-select method4__function">
+            <option value="f1" selected>f₁ = 100(y - x²)² + 5(1 - x)²</option>
+            <option value="f2">f₂ = (x² + y - 11)² + (x + y² - 7)²</option>
+          </select>
+        </div>
+        <div class="form-group col-12">
+            <label class="m-0 mt-1 pl-2 ml-1" for="method4__logs">Вычисления</label>
+            <textarea
+              class="form-control method4__logs"
+              id="method4__logs"
+              rows="8"="6"
+              readonly
+            ></textarea>
+          </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.2.2/math.js"></script>
+    <script src="./math_conf.js"></script>
+    <script src="./methods/golden_section_search.js"></script>
+    <script src="./methods/nelder_mead.js"></script>
+    <script src="./methods/gradient_descent.js"></script>
+    <script src="./methods/conjugate_gradient.js"></script>
+    <script src="./methods/newton.js"></script>
+    <script src="./script.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
