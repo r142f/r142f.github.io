@@ -1,41 +1,71 @@
-document.querySelector(".method1 button").addEventListener("click", e => {
-  logInputData(1);
+let toggle_spinner = n => {
+  document
+    .querySelector(`.method${n} .spinner-border`)
+    .classList.toggle("invisible");
+};
 
-  nelder_nead(
-    functions[getChoosenFunction(1)],
-    getStartCoordinates(1),
-    getTolerance(1)
+document.querySelector(".method1 button").addEventListener("click", e => {
+  toggle_spinner(1);
+  requestAnimationFrame(() =>
+    requestAnimationFrame(function() {
+
+      nelder_nead(
+        functions[getChoosenFunction(1)],
+        getStartCoordinates(1),
+        getTolerance(1)
+      );
+      
+      toggle_spinner(1);
+    })
   );
 });
 
 document.querySelector(".method2 button").addEventListener("click", e => {
-  logInputData(2);
+  toggle_spinner(2);
+  requestAnimationFrame(() =>
+    requestAnimationFrame(function() {
 
-  gradient_descent(
-    functions[getChoosenFunction(2)],
-    getStartCoordinates(2),
-    getTolerance(2),
-    Number(document.querySelector(".method2__step").value)
+      gradient_descent(
+        functions[getChoosenFunction(2)],
+        getStartCoordinates(2),
+        getTolerance(2),
+        Number(document.querySelector(".method2__step").value)
+      );
+
+      toggle_spinner(2);
+    })
   );
 });
 
 document.querySelector(".method3 button").addEventListener("click", e => {
-  logInputData(3);
+  toggle_spinner(3);
+  requestAnimationFrame(() =>
+    requestAnimationFrame(function() {
 
-  conjugate_gradient(
-    functions[getChoosenFunction(3)],
-    getStartCoordinates(3),
-    getTolerance(3)
+      conjugate_gradient(
+        functions[getChoosenFunction(3)],
+        getStartCoordinates(3),
+        getTolerance(3)
+      );
+
+      toggle_spinner(3);
+    })
   );
 });
 
 document.querySelector(".method4 button").addEventListener("click", e => {
-  logInputData(4);
+  toggle_spinner(4);
+  requestAnimationFrame(() =>
+    requestAnimationFrame(function() {
 
-  newton(
-    functions[getChoosenFunction(4)],
-    getStartCoordinates(4),
-    getTolerance(4)
+      newton(
+        functions[getChoosenFunction(4)],
+        getStartCoordinates(4),
+        getTolerance(4)
+      );
+
+      toggle_spinner(4);
+    })
   );
 });
 
@@ -59,26 +89,11 @@ let getTolerance = n =>
 let logCalculation = (n, name, i, x, fx) => {
   document.querySelector(
     `.method${n}__logs`
-  ).value += `${i}:  ${name}(${x[0]}, ${x[1]}) = ${fx}\n`;
+  ).value += `${i}: ${name}(${x[0]}, ${x[1]}) = ${fx}\n`;
 };
 
 let logResult = (n, name, x, fx) => {
   let textarea = document.querySelector(`.method${n}__logs`);
-  textarea.value += `\nОтвет:  ${name}(${x[0]}, ${x[1]}) = ${fx}\n‾‾‾‾‾‾‾‾‾\n`;
+  textarea.value += `\nОтвет: ${name}(${x[0]}, ${x[1]}) = ${fx}\n\n`;
   textarea.scrollTop = textarea.scrollHeight;
-};
-
-let logInputData = n => {
-  let temp_str = [...document
-    .querySelectorAll(`.method${n}  input`)]
-    .reduce((prev, curr, idx, array) => {
-      return prev +=
-        idx + 1 === array.length
-          ? `${curr.name} = ${curr.value}`
-          : `${curr.name} = ${curr.value},  `;
-    }, "");
-
-  document.querySelector(
-    `.method${n}__logs`
-  ).value += `Входные данные:  ${temp_str}\n`;
 };
