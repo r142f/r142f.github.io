@@ -23,7 +23,7 @@ function conjugate_gradient({ node: f_node, f, name }, x, Ɛ) {
     x = add(x_k, multiply(α, d_k));
     let new_calculated_grad = evaluateGradient(grad, x);
 
-    let β =
+    let β = // Полак-Рибьер
       i + (1 % 2)
         ? 0
         : multiply(
