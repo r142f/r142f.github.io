@@ -37,8 +37,8 @@ function conjugate_gradient({ node: f_node, f, name }, x, Ɛ) {
     logCalculation(3, name, i, x, f(...x));
 
   } while (
-    i++ < 5000 &&
-    (norm(subtract(x, x_k)) >= Ɛ || norm(f(...x) - f(...x_k)) >= Ɛ)
+    i++ < 10000 &&
+    (norm(subtract(x, x_k)) >= Ɛ || norm(f(...x) - f(...x_k)) >= Ɛ || norm(calculated_grad) >= Ɛ)
   );
 
   logResult(3, name, x, f(...x));

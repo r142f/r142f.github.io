@@ -1,7 +1,7 @@
 function golden_section_search(f, a, b, ε = 1e-5) {
   const φ = (-1 + Math.sqrt(5)) / 2;
   const φ2 = (3 - Math.sqrt(5)) / 2;
- // console.log([a,b], f(a), f(b));
+
   let h = b - a;
   if (h <= ε) {
     return (a + b) / 2;
@@ -31,6 +31,5 @@ function golden_section_search(f, a, b, ε = 1e-5) {
     }
   }
 
-  let ans =  yc < yd ? (a + d) / 2 : (c + b) / 2;
-  return ans;
+  return yc < yd ? (a + d) / 2 : (c + b) / 2;
 }

@@ -38,7 +38,6 @@ for (let n = 1; n <= 4; n++) {
     toggle_spinner(n);
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
-
         switch (n) {
           case 1:
             nelder_nead(

@@ -1,6 +1,6 @@
 function newton({ node: f_node, f, name }, x, Ɛ) {
-  let first_grad = getGradient(f_node),
-    second_grad = [getGradient(first_grad[0]), getGradient(first_grad[1])],
+  let first_grad = getGradient(f_node), calculated_first_grad,
+    second_grad = [getGradient(first_grad[0]), getGradient(first_grad[1])], calculated_second_grad,
     x_k,
     i = 0;
 
@@ -32,8 +32,8 @@ function newton({ node: f_node, f, name }, x, Ɛ) {
 
     logCalculation(4, name, i, x, f(...x));
   } while (
-    i++ < 5000 &&
-    (norm(subtract(x, x_k)) >= Ɛ || norm(f(...x) - f(...x_k)) >= Ɛ)
+    i++ < 10000 &&
+    (norm(subtract(x, x_k)) >= Ɛ || norm(f(...x) - f(...x_k)) >= Ɛ || norm(calculated_first_grad) >= Ɛ)
   );
 
   logResult(4, name, x, f(...x));
