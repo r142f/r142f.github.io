@@ -12,7 +12,11 @@ const [
     det,
     inv,
     mod,
-    min
+    min,
+    ceil,
+    log,
+    floor,
+    sqrt
   }
 ] = [math.parser(), math];
 

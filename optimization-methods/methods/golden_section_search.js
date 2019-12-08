@@ -1,6 +1,6 @@
 function golden_section_search(f, a, b, ε = 1e-5) {
-  const φ = (-1 + Math.sqrt(5)) / 2;
-  const φ2 = (3 - Math.sqrt(5)) / 2;
+  const φ = (-1 + sqrt(5)) / 2;
+  const φ2 = (3 - sqrt(5)) / 2;
 
   let h = b - a;
   if (h <= ε) {
@@ -11,7 +11,7 @@ function golden_section_search(f, a, b, ε = 1e-5) {
   let [yc, yd] = [f(c), f(d)];
 
   //Required steps to achieve tolerance
-  let n = math.floor(math.ceil(math.log(ε / h) / math.log(φ)));
+  let n = floor(ceil(log(ε / h) / log(φ)));
 
   for (let k = 0; k < n; k++) {
     if (yc < yd) {
